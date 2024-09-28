@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     public GameObject bombPrefab;
     public Transform bombsTransform;
 
+    public GameObject powerUpPrefab;
+    public Transform powerUpTransform;
+
     public float speed = 0f;
 
     public float MaxSpeed = 20f;
@@ -24,8 +27,12 @@ public class Player : MonoBehaviour
         acceleration = MaxSpeed / AccelerationTime;
 
         deceleration = MaxSpeed / DecelerationTime;
-        
+
         PlayerMovement();
+
+        EnemyRadar (5f, 30);
+
+        SpawnPowerups(5f, 6);
 
     }
 
@@ -50,4 +57,62 @@ public class Player : MonoBehaviour
 
         transform.Translate(movement * speed * Time.deltaTime);
     }
+
+    public void EnemyRadar(float radius, int circlePoints)
+    {
+        Vector3 playerPosition = transform.position;
+
+        if (circlePoints <= 0)
+            return;
+
+        float angle = (30 - circlePoints) * (360f / 30) * Mathf.Deg2Rad;
+
+        Vector3 currentPointPos = new Vector3(
+            playerPosition.x + Mathf.Cos(angle) * radius,
+            playerPosition.y + Mathf.Sin(angle) * radius,
+            playerPosition.z
+        );
+
+        angle += (360f / 30) * Mathf.Deg2Rad; // Move to the next point
+        Vector3 nextPointPos = new Vector3(
+            playerPosition.x + Mathf.Cos(angle) * radius,
+            playerPosition.y + Mathf.Sin(angle) * radius,
+            playerPosition.z
+        );
+
+        float distanceToEnemy = Vector3.Distance(playerPosition, enemyTransform.position);
+        Color circleColor;
+
+        if (distanceToEnemy <= radius)
+        {
+            circleColor = Color.red; 
+        }
+        else
+        {
+            circleColor = Color.green; 
+        }
+
+        Debug.DrawLine(currentPointPos, nextPointPos, circleColor);
+
+        EnemyRadar(radius, circlePoints - 1);
+    }
+
+    public void SpawnPowerups(float radius, int numberOfPowerups)
+    {
+        if (numberOfPowerups <= 0 || powerUpPrefab == null)
+        {
+            return;
+        }
+
+        float angleStep = 360f / numberOfPowerups;
+        for (int i = 0; i < numberOfPowerups; i++)
+        {
+            float angle = i * angleStep * Mathf.Deg2Rad;
+            Vector3 spawnPosition = transform.position + new Vector3(Mathf.Cos(angle) * radius, Mathf.Sin(angle) * radius, 0f);
+
+            Instantiate(powerUpPrefab, spawnPosition, Quaternion.identity, powerUpTransform);
+        }
+    }
+
+
 }
