@@ -228,11 +228,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5925023614995886300, guid: b7c142e6320aaac48a403d0f52774bcb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.05
+      value: 7.16
       objectReference: {fileID: 0}
     - target: {fileID: 5925023614995886300, guid: b7c142e6320aaac48a403d0f52774bcb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.05
+      value: 3.61
       objectReference: {fileID: 0}
     - target: {fileID: 5925023614995886300, guid: b7c142e6320aaac48a403d0f52774bcb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -303,11 +303,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 407285235652155554, guid: f9881115152932d4cbf2a7722a51c8c5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.29
+      value: -4.51
       objectReference: {fileID: 0}
     - target: {fileID: 407285235652155554, guid: f9881115152932d4cbf2a7722a51c8c5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.57
+      value: -3.69
       objectReference: {fileID: 0}
     - target: {fileID: 407285235652155554, guid: f9881115152932d4cbf2a7722a51c8c5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -371,6 +371,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  bombprefab: {fileID: 7732749828314350353, guid: 188ac6a2fc7349b41a77899e2e158a06, type: 3}
+  bombOffset: 3
+  bombDisappear: 2
+  radius: 3
+  secondBombScale: {x: 0.5, y: 0.5, z: 0}
+  radius2: 1
+  thirdBombScale: {x: 0.25, y: 0.25, z: 0}
 --- !u!4 &5194914592146617114 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 407285235652155554, guid: f9881115152932d4cbf2a7722a51c8c5, type: 3}
