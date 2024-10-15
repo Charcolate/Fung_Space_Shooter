@@ -293,6 +293,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   PlayerTransform: {fileID: 5194914592146617114}
+  enemyBombPrefab: {fileID: 5922114261952402977, guid: 3557e592617a8e842a0cbec345eca418, type: 3}
+  bombSpawnPos: 1
+  bombCooldown: 12
+  currentBombCooldown: 0
+  distanceBetween: 10
 --- !u!1001 &5194914592146617110
 PrefabInstance:
   m_ObjectHideFlags: 0
